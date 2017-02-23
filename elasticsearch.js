@@ -7,22 +7,29 @@ let elasticClient = new elasticClient({
 
 let indexName = "randomindex";
 
-
 //Deletes an existiing file
 function deleteIndex() {
   return elasticClient({
     index: indexName,
-    type: "document",
-    body: {
-      docsuggest: {
-        text: input,
-        completion: {
-          field: "suggest",
-          fuxxy: true
-        }
-      }
-    }
+});
+
+exports.deleteIndex = deleteIndex;
+
+
+//creates the index
+function initIndex() {
+  return elasticClient.indicies.create({
+    index: indexName
   });
 }
 
-exports.getSuggestions = getSuggestions; 
+exports.initIndex = initIndex;
+
+//check if index exists
+function indexExists() {
+  return elasticClient.indicies.exists({
+    index: indexName
+  });
+}
+
+exports.indexExists = indexExists;
