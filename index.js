@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express();
 
-
-
-
-
-app.listen(400, () => {
-  console.log('I\'m wide awake, I\'m listening, don\'t be afraid')
+app.listen(4000, () => {
+  console.log('I\'m wide awake, I\'m listening on port 4000. Don\'t be afraid')
 });
