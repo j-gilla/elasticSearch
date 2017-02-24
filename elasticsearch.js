@@ -9,7 +9,7 @@ let indexName = "randomindex";
 
 //Deletes an existiing file
 function deleteIndex() {
-  return elasticClient({
+  return elasticClient.indicies.delete({
     index: indexName,
 });
 
