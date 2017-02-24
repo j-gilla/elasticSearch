@@ -33,3 +33,25 @@ function indexExists() {
 }
 
 exports.indexExists = indexExists;
+
+
+function initMapping() {
+  return elasticClient.indices({
+    index: indexName,
+    type:  "document",
+    body: {
+      propertieis: {
+          title: { type: "string" },
+          content: { type: "string" },
+          suggest: {
+            type: "completion",
+            analyzer: "simple",
+            search_analyzer: "simple",
+            payloads: true
+          }
+      }
+    }
+  });
+}
+
+exports.initMapping = initMapping;
